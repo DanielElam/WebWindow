@@ -38,12 +38,18 @@ WebWindow::WebWindow(AutoString title, WebWindow* parent, WebMessageReceivedCall
 {
     _webMessageReceivedCallback = webMessageReceivedCallback;
     NSRect frame = NSMakeRect(0, 0, 900, 600);
-    NSWindow *window = [[NSWindow alloc]
+    NSWindow* window = [[NSWindow alloc]
         initWithContentRect:frame
         styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskResizable | NSWindowStyleMaskMiniaturizable
         backing: NSBackingStoreBuffered
         defer: false];
     _window = window;
+    NSToolbar* customToolbar = [NSToolbar alloc];
+    customToolbar.showsBaselineSeparator = false;
+    window.titlebarAppearsTransparent = true;
+    window.titleVisibility = NSWindowTitleHidden;
+    window.toolbar = customToolbar;
+    window.styleMask |= NSWindowStyleMaskFullSizeContentView;
 
     [window cascadeTopLeftFromPoint:NSMakePoint(20,20)];
     SetTitle(title);

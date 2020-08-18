@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WebWindow" Version="$(SamplesWebWindowPackageVersion)" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="wwwroot\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
